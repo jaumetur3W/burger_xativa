@@ -1,0 +1,6 @@
+---
+import Icon from './Icon.astro';
+---
+<aside class="fixed inset-x-0 bottom-0 z-40 border-t border-white/15 bg-ink/95 p-3 pb-[max(.75rem,env(safe-area-inset-bottom))] backdrop-blur-lg md:hidden" aria-label="Acciones rápidas">
+  <div class="mx-auto grid max-w-lg grid-cols-[1fr_auto] gap-2"><a class="focus-ring inline-flex items-center justify-center gap-2 bg-lime px-4 py-3 text-xs font-black uppercase tracking-wider text-ink" href="#reservas">Pedir ahora <Icon name="arrow-up-right" /></a><a class="focus-ring grid min-w-14 place-items-center border border-white/25 px-4 py-3 text-white transition hover:border-lime hover:text-lime" href="tel:+34000000000" aria-label="Llamar al número de demostración"><svg aria-hidden="true" viewBox="0 0 24 24" class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M7 3.5h3l1.5 4-2 1.5a15 15 0 0 0 5.5 5.5l1.5-2 4 1.5v3c0 1-.8 1.8-1.8 1.8A15.2 15.2 0 0 1 5.2 5.3c0-1 .8-1.8 1.8-1.8Z"/></svg></a></div>
+</aside>

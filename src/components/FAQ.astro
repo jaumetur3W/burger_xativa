@@ -1,0 +1,26 @@
+---
+import Icon from './Icon.astro';
+const questions = [
+  { q: '¿Puedo reservar mesa desde aquí?', a: 'Sí. Completa el formulario de reserva al final de la página. En esta demo verás una confirmación local; una web conectada podría enviar la solicitud al restaurante.' },
+  { q: '¿Puedo pedir para llevar?', a: 'La plantilla incluye un carrito y un flujo de pedido simulado. Para aceptar pedidos reales habría que conectarlo con un sistema de pedidos y pagos.' },
+  { q: '¿Dónde consulto los alérgenos?', a: 'Pide siempre la información actualizada al personal antes de realizar tu pedido. Los ingredientes de esta carta son orientativos y de demostración.' },
+  { q: '¿Cuál es el horario de apertura?', a: 'El indicador del hero usa el horario de muestra (miércoles a domingo, de 13:00 a 23:00) y la hora local de tu dispositivo. Sustitúyelo por el horario real antes de publicar.' },
+];
+---
+<section id="faq" class="bg-[#10100d] px-5 py-24 md:px-10 md:py-28" aria-labelledby="faq-heading">
+  <div class="mx-auto grid max-w-7xl gap-12 md:grid-cols-[.7fr_1.3fr]">
+    <div class="reveal"><p class="mb-4 text-[10px] font-black uppercase tracking-[.25em] text-lime">Resolvemos dudas</p><h2 id="faq-heading" class="display text-5xl leading-[.9] md:text-6xl">Preguntas<br /><span class="text-lime">frecuentes.</span></h2><p class="mt-6 max-w-sm text-sm leading-6 text-white/55">Lo esencial antes de que llegue el primer mordisco.</p></div>
+    <div class="space-y-3">{questions.map((item, index) => <details class="faq-item reveal border border-white/10 bg-panel" id={`faq-${index + 1}`}>
+      <summary class="focus-ring flex cursor-pointer list-none items-center justify-between gap-4 p-5 text-left text-sm font-bold text-white marker:content-none md:p-6"><span>{item.q}</span><span class="grid h-8 w-8 shrink-0 place-items-center bg-lime text-ink"><Icon name="plus" class="faq-icon h-4 w-4" /></span></summary>
+      <div class="faq-answer-grid"><div class="overflow-hidden"><p class="px-5 pb-5 text-sm leading-6 text-white/60 md:px-6 md:pb-6">{item.a}</p></div></div>
+    </details>)}</div>
+  </div>
+</section>
+
+<script>
+  const faqItems = [...document.querySelectorAll<HTMLDetailsElement>('.faq-item')];
+  faqItems.forEach((item) => item.addEventListener('toggle', () => {
+    if (!item.open) return;
+    faqItems.filter((other) => other !== item && other.open).forEach((other) => { other.open = false; });
+  }));
+</script>

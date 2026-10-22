@@ -1,0 +1,13 @@
+---
+type IconName = 'arrow-up-right' | 'chevron-down' | 'arrow-up' | 'plus' | 'close' | 'check';
+interface Props { name: IconName; class?: string; }
+const { name, class: className = 'h-4 w-4' } = Astro.props;
+---
+<svg aria-hidden="true" viewBox="0 0 24 24" class={className} fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+  {name === 'arrow-up-right' && <><path d="M7 17 17 7" /><path d="M7 7h10v10" /></>}
+  {name === 'chevron-down' && <path d="m7 10 5 5 5-5" />}
+  {name === 'arrow-up' && <><path d="M12 19V5" /><path d="m5 12 7-7 7 7" /></>}
+  {name === 'plus' && <><path d="M12 5v14" /><path d="M5 12h14" /></>}
+  {name === 'close' && <><path d="m18 6-12 12" /><path d="M6 6l12 12" /></>}
+  {name === 'check' && <path d="m5 12 4 4L19 6" />}
+</svg>

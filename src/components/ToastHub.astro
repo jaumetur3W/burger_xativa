@@ -1,0 +1,43 @@
+<div id="toast-region" class="toast-region" aria-live="polite" aria-relevant="additions text" aria-atomic="false" aria-label="Notificaciones"></div>
+
+<script>
+  const toastRegion = document.querySelector<HTMLElement>('#toast-region');
+  window.addEventListener('app:toast', (event) => {
+    const detail = (event as CustomEvent<{ message?: string }>).detail;
+    if (!toastRegion || !detail?.message) return;
+    const toast = document.createElement('div');
+    toast.className = 'toast-message';
+    toast.setAttribute('role', 'status');
+    const message = document.createElement('p');
+    message.className = 'text-sm font-semibold text-white';
+    message.textContent = detail.message;
+    const dismiss = document.createElement('button');
+    dismiss.type = 'button';
+    dismiss.className = 'focus-ring grid h-8 w-8 shrink-0 place-items-center text-lg text-white/70 transition hover:text-white';
+    dismiss.setAttribute('aria-label', 'Cerrar notificación');
+    const closeIcon = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+    closeIcon.setAttribute('viewBox', '0 0 24 24');
+    closeIcon.setAttribute('aria-hidden', 'true');
+    closeIcon.setAttribute('class', 'h-4 w-4');
+    closeIcon.setAttribute('fill', 'none');
+    closeIcon.setAttribute('stroke', 'currentColor');
+    closeIcon.setAttribute('stroke-width', '1.8');
+    closeIcon.setAttribute('stroke-linecap', 'round');
+    const closePathA = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+    closePathA.setAttribute('d', 'm18 6-12 12');
+    const closePathB = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+    closePathB.setAttribute('d', 'M6 6l12 12');
+    closeIcon.append(closePathA, closePathB);
+    dismiss.append(closeIcon);
+    const remove = () => {
+      toast.classList.add('toast-leave');
+      window.setTimeout(() => toast.remove(), 180);
+    };
+    dismiss.addEventListener('click', remove);
+    toast.append(message, dismiss);
+    toastRegion.append(toast);
+    let timeout = window.setTimeout(remove, 4200);
+    toast.addEventListener('mouseenter', () => window.clearTimeout(timeout));
+    toast.addEventListener('mouseleave', () => { timeout = window.setTimeout(remove, 2400); });
+  });
+</script>

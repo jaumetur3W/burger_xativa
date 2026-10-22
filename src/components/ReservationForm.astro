@@ -1,0 +1,57 @@
+---
+import Icon from './Icon.astro';
+---
+<section class="border-t border-white/10 px-6 py-8 md:px-12 md:py-10" aria-labelledby="reservation-heading">
+  <div class="mx-auto max-w-4xl">
+    <p class="text-[10px] font-black uppercase tracking-[.25em] text-lime">Tu sitio te espera · demo</p>
+    <h2 id="reservation-heading" class="display mt-3 text-3xl md:text-4xl">Reserva una mesa<span class="text-lime">.</span></h2>
+    <p id="reservation-note" class="mt-2 max-w-xl text-sm leading-6 text-white/55">Déjanos tus datos y te confirmaremos la reserva. Esta versión es una demostración y no envía información a un restaurante.</p>
+    <form id="reservation-form" class="mt-7 grid gap-5 sm:grid-cols-2" aria-describedby="reservation-note">
+      <div class="sm:col-span-1"><label class="mb-2 block text-xs font-bold text-white" for="reservation-name">Nombre</label><input class="form-control" id="reservation-name" name="name" type="text" autocomplete="name" minlength="2" maxlength="80" required /></div>
+      <div class="sm:col-span-1"><label class="mb-2 block text-xs font-bold text-white" for="reservation-phone">Teléfono</label><input class="form-control" id="reservation-phone" name="telephone" type="tel" autocomplete="tel" inputmode="tel" pattern="[+0-9() .-]{9,20}" title="Introduce un teléfono válido con al menos 9 caracteres." required /></div>
+      <div><label class="mb-2 block text-xs font-bold text-white" for="reservation-guests">Comensales</label><select class="form-control" id="reservation-guests" name="guests" required><option value="" disabled selected>Selecciona</option>{Array.from({ length: 10 }, (_, index) => <option value={index + 1}>{index + 1} {index === 0 ? 'persona' : 'personas'}</option>)}</select></div>
+      <div><label class="mb-2 block text-xs font-bold text-white" for="reservation-date">Fecha</label><input class="form-control" id="reservation-date" name="date" type="date" required /></div>
+      <div><label class="mb-2 block text-xs font-bold text-white" for="reservation-time">Hora</label><select class="form-control" id="reservation-time" name="time" required><option value="" disabled selected>Selecciona</option>{['13:00', '13:30', '14:00', '14:30', '20:00', '20:30', '21:00', '21:30', '22:00'].map((time) => <option value={time}>{time}</option>)}</select></div>
+      <div class="flex items-end"><button type="submit" class="focus-ring inline-flex w-full items-center justify-center gap-2 bg-lime px-6 py-4 text-xs font-black uppercase tracking-wider text-ink transition hover:bg-white">Solicitar reserva <Icon name="arrow-up-right" /></button></div>
+    </form>
+    <div id="reservation-success" class="mt-7 hidden border border-lime/40 bg-lime/10 p-6" role="status" aria-live="polite" tabindex="-1"><p class="display text-xl text-lime">¡Solicitud lista!</p><p id="reservation-confirmation" class="mt-2 text-sm leading-6 text-white/80"></p><p class="mt-3 text-xs text-white/50">Confirmación simulada para esta demo. No se ha enviado al restaurante.</p><button id="reservation-again" class="focus-ring mt-5 border border-white/25 px-4 py-3 text-[10px] font-black uppercase tracking-wider text-white transition hover:border-lime hover:text-lime" type="button">Hacer otra solicitud</button></div>
+  </div>
+</section>
+
+<script>
+  const reservationForm = document.querySelector<HTMLFormElement>('#reservation-form');
+  const reservationDate = document.querySelector<HTMLInputElement>('#reservation-date');
+  const reservationSuccess = document.querySelector<HTMLElement>('#reservation-success');
+  const reservationConfirmation = document.querySelector<HTMLElement>('#reservation-confirmation');
+  const reservationAgain = document.querySelector<HTMLButtonElement>('#reservation-again');
+
+  if (reservationDate) {
+    const today = new Date();
+    const localToday = new Date(today.getTime() - today.getTimezoneOffset() * 60_000).toISOString().slice(0, 10);
+    reservationDate.min = localToday;
+  }
+
+  reservationForm?.addEventListener('submit', (event) => {
+    event.preventDefault();
+    if (!reservationForm.reportValidity()) return;
+    const data = new FormData(reservationForm);
+    if (reservationConfirmation) {
+      reservationConfirmation.textContent = `Gracias, ${String(data.get('name'))}. Hemos anotado ${data.get('guests')} comensales para el ${data.get('date')} a las ${data.get('time')}. En un servicio conectado, aquí se confirmaría por teléfono.`;
+    }
+    reservationForm.hidden = true;
+    if (reservationSuccess) {
+      reservationSuccess.classList.remove('hidden');
+      reservationSuccess.focus();
+    }
+    window.dispatchEvent(new CustomEvent('app:toast', { detail: { message: 'Solicitud de reserva preparada.' } }));
+  });
+
+  reservationAgain?.addEventListener('click', () => {
+    reservationForm?.reset();
+    if (reservationSuccess) reservationSuccess.classList.add('hidden');
+    if (reservationForm) {
+      reservationForm.hidden = false;
+      reservationForm.querySelector<HTMLInputElement>('#reservation-name')?.focus();
+    }
+  });
+</script>

@@ -1,0 +1,37 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import SiteHeader from '../components/SiteHeader.astro';
+import Hero from '../components/Hero.astro';
+import MenuGrid from '../components/MenuGrid.astro';
+import Experience from '../components/Experience.astro';
+import VisitUs from '../components/VisitUs.astro';
+import SiteFooter from '../components/SiteFooter.astro';
+import MobileCTA from '../components/MobileCTA.astro';
+import CartDrawer from '../components/CartDrawer.astro';
+import FAQ from '../components/FAQ.astro';
+import ToastHub from '../components/ToastHub.astro';
+import QrMenu from '../components/QrMenu.astro';
+import VipClub from '../components/VipClub.astro';
+import ZeroCommissions from '../components/ZeroCommissions.astro';
+import GoogleReviews from '../components/GoogleReviews.astro';
+import DeliveryTracker from '../components/DeliveryTracker.astro';
+---
+<BaseLayout>
+  <SiteHeader />
+  <main id="contenido">
+    <Hero />
+    <MenuGrid />
+    <Experience />
+    <ZeroCommissions />
+    <QrMenu />
+    <VipClub />
+    <VisitUs />
+    <DeliveryTracker />
+    <GoogleReviews />
+    <FAQ />
+  </main>
+  <SiteFooter />
+  <MobileCTA />
+  <CartDrawer />
+  <ToastHub />
+</BaseLayout>

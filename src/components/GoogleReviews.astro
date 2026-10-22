@@ -1,0 +1,11 @@
+---
+import Icon from './Icon.astro';
+// Sustituye PLACE_ID_DEMO por el Place ID verificado del establecimiento antes de publicar.
+const reviewUrl = 'https://search.google.com/local/writereview?placeid=PLACE_ID_DEMO';
+---
+<section id="resenas" class="px-5 py-16 md:px-10 md:py-20" aria-labelledby="review-heading">
+  <div class="reveal mx-auto flex max-w-7xl flex-col items-start justify-between gap-7 border border-white/10 bg-panel p-6 md:flex-row md:items-center md:p-9">
+    <div><p class="mb-3 text-[10px] font-black uppercase tracking-[.25em] text-lime">La comunidad también cocina esto</p><h2 id="review-heading" class="display text-3xl md:text-4xl">¿Te gustó? Cuéntaselo a Google.</h2><p class="mt-3 max-w-2xl text-sm leading-6 text-white/55">Las opiniones ayudan a que más gente encuentre el local. En esta plantilla, configura el Place ID real para activar el enlace correcto.</p></div>
+    <a class="focus-ring inline-flex shrink-0 items-center gap-2 bg-lime px-5 py-4 text-xs font-black uppercase tracking-wider text-ink transition hover:bg-white" href={reviewUrl} target="_blank" rel="noopener noreferrer">Dejar reseña en Google <Icon name="arrow-up-right" /></a>
+  </div>
+</section>

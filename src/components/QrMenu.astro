@@ -1,0 +1,24 @@
+---
+import Icon from './Icon.astro';
+---
+<section id="qr-menu" class="px-5 py-20 md:px-10 md:py-28" aria-labelledby="qr-heading">
+  <div class="reveal mx-auto grid max-w-7xl items-center gap-10 border border-white/10 bg-panel p-6 md:grid-cols-[1.15fr_.85fr] md:p-12">
+    <div><p class="mb-4 text-[10px] font-black uppercase tracking-[.25em] text-lime">Una mesa, un toque, listo</p><h2 id="qr-heading" class="display text-4xl leading-[.92] md:text-6xl">Tu carta.<br /><span class="text-lime">Sin esperas.</span></h2><p class="mt-6 max-w-xl text-sm leading-6 text-white/60">Escanea desde la mesa, explora la carta y prepara tu pedido sin esperar a que pase nadie. Un flujo más ágil para el cliente y para el equipo.</p><a href="#menu" class="focus-ring mt-7 inline-flex items-center gap-2 bg-lime px-5 py-4 text-xs font-black uppercase tracking-wider text-ink transition hover:bg-white">Explorar carta <Icon name="arrow-up-right" /></a><p class="mt-4 text-[10px] leading-5 text-white/55">El QR apunta a esta página y usa un generador de imagen externo en esta demo. Para producción, genera un QR local con el dominio definitivo.</p></div>
+    <div class="mx-auto w-full max-w-xs border border-white/10 bg-ink p-4 text-center"><img id="menu-qr" class="mx-auto aspect-square w-full max-w-[260px]" width="260" height="260" loading="lazy" decoding="async" alt="Código QR amarillo sobre fondo oscuro que abre la carta digital" /><p class="mt-3 text-[10px] font-black uppercase tracking-[.18em] text-white/75">Escanea y pide desde tu mesa</p></div>
+  </div>
+</section>
+
+<script>
+  const menuQr = document.querySelector<HTMLImageElement>('#menu-qr');
+  if (menuQr) {
+    const menuUrl = new URL(window.location.pathname, window.location.origin);
+    menuUrl.hash = 'menu';
+    const qrUrl = new URL('https://api.qrserver.com/v1/create-qr-code/');
+    qrUrl.searchParams.set('size', '520x520');
+    qrUrl.searchParams.set('data', menuUrl.toString());
+    qrUrl.searchParams.set('color', 'ffff00');
+    qrUrl.searchParams.set('bgcolor', '0a0a0a');
+    qrUrl.searchParams.set('qzone', '2');
+    menuQr.src = qrUrl.toString();
+  }
+</script>

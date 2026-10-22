@@ -1,0 +1,209 @@
+---
+import Icon from './Icon.astro';
+---
+<button id="cart-trigger" data-cart-trigger type="button" class="focus-ring fixed bottom-24 right-4 z-40 inline-flex items-center gap-2 bg-lime px-4 py-3 text-xs font-black uppercase tracking-wider text-ink shadow-xl transition hover:bg-white md:bottom-6 md:right-6" aria-haspopup="dialog" aria-controls="cart-dialog" aria-expanded="false">
+  <svg aria-hidden="true" viewBox="0 0 24 24" class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 8h14l1 13H4L5 8Z"/><path d="M9 9V6a3 3 0 0 1 6 0v3"/></svg>
+  <span>Carrito</span><span id="cart-count" class="grid h-6 min-w-6 place-items-center rounded-full bg-ink px-1 text-[10px] font-black text-lime" aria-label="0 productos">0</span>
+</button>
+
+<dialog id="cart-dialog" class="cart-dialog fixed inset-y-0 right-0 m-0 h-full max-h-none w-full max-w-md border-0 bg-ink p-0 text-white shadow-2xl" aria-labelledby="cart-title">
+  <div class="flex h-full flex-col">
+    <header class="flex items-center justify-between border-b border-white/10 px-5 py-5"><div><p class="text-[10px] font-black uppercase tracking-[.2em] text-lime">Tu pedido · demo</p><h2 id="cart-title" class="display mt-1 text-2xl">El carrito</h2></div><button id="cart-close" type="button" class="focus-ring grid h-11 w-11 place-items-center border border-white/20 text-white transition hover:border-lime hover:text-lime" aria-label="Cerrar carrito"><Icon name="close" class="h-5 w-5" /></button></header>
+    <section id="cart-view" class="flex min-h-0 flex-1 flex-col" aria-label="Productos del carrito">
+      <div id="cart-items" class="min-h-0 flex-1 overflow-y-auto px-5 py-4" aria-live="polite"><p id="cart-empty" class="py-12 text-center text-sm text-white/55">Todavía no has añadido nada. El antojo empieza en la carta.</p></div>
+      <section class="mx-5 mb-4 border border-white/10 bg-panel p-4" aria-label="Progreso del club de fidelización"><div class="mb-2 flex items-center justify-between gap-3"><p class="text-xs font-bold">Recompensa de la casa</p><span id="loyalty-count" class="text-[10px] font-black text-lime">0/5</span></div><p id="loyalty-message" class="mb-3 text-xs leading-5 text-white/55">Te faltan 5 productos para un postre gratis.</p><div class="reward-track" role="progressbar" aria-label="Progreso para un postre de cortesía" aria-valuemin="0" aria-valuemax="5" aria-valuenow="0"><div id="loyalty-fill" class="reward-fill w-0"></div></div><p class="mt-2 text-[9px] text-white/55">Recompensa ilustrativa; se activaría al integrar el sistema de fidelización.</p></section>
+      <footer class="border-t border-white/10 px-5 py-5"><div class="mb-4 flex items-center justify-between text-sm"><span class="text-white/60">Total orientativo</span><strong id="cart-total" class="text-lg text-lime">0,00 €</strong></div><button id="checkout-button" type="button" class="focus-ring inline-flex w-full items-center justify-center gap-2 bg-lime px-5 py-4 text-xs font-black uppercase tracking-wider text-ink transition hover:bg-white disabled:cursor-not-allowed disabled:opacity-40" disabled>Finalizar pedido <Icon name="arrow-up-right" /></button><p class="mt-3 text-center text-[10px] text-white/55">Pedido de demostración: no se procesa ningún pago.</p></footer>
+    </section>
+    <section id="order-tracker" class="min-h-0 flex-1 overflow-y-auto px-5 py-7" aria-labelledby="tracker-title" hidden>
+      <p class="text-[10px] font-black uppercase tracking-[.2em] text-lime">Seguimiento · simulación</p>
+      <h3 id="tracker-title" class="display mt-2 text-3xl">Pedido en marcha<span class="text-lime">.</span></h3>
+      <p id="tracker-status" class="mt-2 text-sm text-white/65" role="status" aria-live="polite">Pedido recibido en cocina.</p>
+      <div id="order-progressbar" class="mt-8 h-2 overflow-hidden bg-white/10" role="progressbar" aria-label="Progreso del pedido" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"><div id="tracker-progress" class="h-full w-0 bg-lime transition-[width] duration-700 ease-out"></div></div>
+      <ol class="mt-8 space-y-7">
+        <li class="tracker-step flex gap-4" data-order-step="0" data-state="current"><span class="tracker-step-number grid h-9 w-9 shrink-0 place-items-center rounded-full border text-xs font-black">1</span><span><strong class="block text-sm">Recibido en cocina</strong><small class="mt-1 block text-xs text-white/55">Hemos recibido tu pedido.</small></span></li>
+        <li class="tracker-step flex gap-4" data-order-step="1" data-state="upcoming"><span class="tracker-step-number grid h-9 w-9 shrink-0 place-items-center rounded-full border text-xs font-black">2</span><span><strong class="block text-sm">Preparando</strong><small class="mt-1 block text-xs text-white/55">La cocina se pone manos a la obra.</small></span></li>
+        <li class="tracker-step flex gap-4" data-order-step="2" data-state="upcoming"><span class="tracker-step-number grid h-9 w-9 shrink-0 place-items-center rounded-full border text-xs font-black">3</span><span><strong class="block text-sm">¡Listo!</strong><small class="mt-1 block text-xs text-white/55">Tu pedido está listo para recoger.</small></span></li>
+      </ol>
+      <p class="mt-8 border-t border-white/10 pt-4 text-xs leading-5 text-white/55">Este seguimiento es ilustrativo. No se ha enviado un pedido real.</p>
+      <button id="tracker-close" type="button" class="focus-ring mt-6 w-full border border-white/25 px-5 py-4 text-xs font-black uppercase tracking-wider text-white transition hover:border-lime hover:text-lime">Cerrar seguimiento</button>
+    </section>
+  </div>
+</dialog>
+
+<script>
+  const triggers = [...document.querySelectorAll<HTMLButtonElement>('[data-cart-trigger]')];
+  const dialog = document.querySelector<HTMLDialogElement>('#cart-dialog');
+  const closeButton = document.querySelector<HTMLButtonElement>('#cart-close');
+  const countOutputs = [...document.querySelectorAll<HTMLElement>('#cart-count, #header-cart-count')];
+  const itemsOutput = document.querySelector<HTMLElement>('#cart-items');
+  const totalOutput = document.querySelector<HTMLElement>('#cart-total');
+  const emptyMessage = document.querySelector<HTMLElement>('#cart-empty');
+  const checkoutButton = document.querySelector<HTMLButtonElement>('#checkout-button');
+  const loyaltyCount = document.querySelector<HTMLElement>('#loyalty-count');
+  const loyaltyMessage = document.querySelector<HTMLElement>('#loyalty-message');
+  const loyaltyFill = document.querySelector<HTMLElement>('#loyalty-fill');
+  const loyaltyProgress = document.querySelector<HTMLElement>('[aria-label="Progreso para un postre de cortesía"]');
+  const cartView = document.querySelector<HTMLElement>('#cart-view');
+  const trackerView = document.querySelector<HTMLElement>('#order-tracker');
+  const trackerStatus = document.querySelector<HTMLElement>('#tracker-status');
+  const trackerProgress = document.querySelector<HTMLElement>('#tracker-progress');
+  const progressBar = document.querySelector<HTMLElement>('#order-progressbar');
+  const trackerClose = document.querySelector<HTMLButtonElement>('#tracker-close');
+  const cart = new Map<string, { name: string; price: number; quantity: number }>();
+  const euros = new Intl.NumberFormat('es-ES', { style: 'currency', currency: 'EUR' });
+  let trackerTimers: number[] = [];
+  let activeTrigger: HTMLButtonElement | undefined;
+
+  function notify(message: string) {
+    window.dispatchEvent(new CustomEvent('app:toast', { detail: { message } }));
+  }
+
+  function renderCart() {
+    if (!itemsOutput || !countOutputs.length || !totalOutput || !emptyMessage || !checkoutButton) return;
+    itemsOutput.querySelectorAll('[data-cart-row]').forEach((row) => row.remove());
+    const count = [...cart.values()].reduce((sum, item) => sum + item.quantity, 0);
+    const total = [...cart.values()].reduce((sum, item) => sum + item.price * item.quantity, 0);
+    countOutputs.forEach((output) => {
+      output.textContent = String(count);
+      output.setAttribute('aria-label', `${count} ${count === 1 ? 'producto' : 'productos'}`);
+    });
+    triggers.forEach((button) => button.setAttribute('aria-label', `Abrir carrito, ${count} ${count === 1 ? 'producto' : 'productos'}`));
+    totalOutput.textContent = euros.format(total);
+    emptyMessage.hidden = count > 0;
+    checkoutButton.disabled = count === 0;
+    const rewardCount = Math.min(count, 5);
+    if (loyaltyCount) loyaltyCount.textContent = `${rewardCount}/5`;
+    if (loyaltyMessage) loyaltyMessage.textContent = count >= 5
+      ? '¡Postre gratis desbloqueado! (recompensa de demo)'
+      : `Te faltan ${5 - count} ${5 - count === 1 ? 'producto' : 'productos'} para un postre gratis.`;
+    if (loyaltyFill) loyaltyFill.style.width = `${rewardCount * 20}%`;
+    loyaltyProgress?.setAttribute('aria-valuenow', String(rewardCount));
+
+    cart.forEach((item, id) => {
+      const row = document.createElement('article');
+      row.dataset.cartRow = '';
+      row.className = 'flex items-center justify-between gap-4 border-b border-white/10 py-4';
+      const details = document.createElement('div');
+      const name = document.createElement('h3');
+      name.className = 'display text-base';
+      name.textContent = item.name;
+      const price = document.createElement('p');
+      price.className = 'mt-1 text-xs text-white/55';
+      price.textContent = `${euros.format(item.price)} · ${euros.format(item.price * item.quantity)}`;
+      details.append(name, price);
+
+      const controls = document.createElement('div');
+      controls.className = 'flex shrink-0 items-center gap-2';
+      const minus = document.createElement('button');
+      minus.type = 'button'; minus.dataset.cartChange = id; minus.dataset.change = '-1';
+      minus.className = 'focus-ring grid h-9 w-9 place-items-center border border-white/20 text-lg text-white';
+      minus.setAttribute('aria-label', `Quitar una unidad de ${item.name}`); minus.textContent = '−';
+      const quantity = document.createElement('span'); quantity.className = 'min-w-5 text-center text-sm'; quantity.textContent = String(item.quantity);
+      const plus = document.createElement('button');
+      plus.type = 'button'; plus.dataset.cartChange = id; plus.dataset.change = '1';
+      plus.className = 'focus-ring grid h-9 w-9 place-items-center border border-white/20 text-lg text-white';
+      plus.setAttribute('aria-label', `Añadir una unidad de ${item.name}`); plus.textContent = '+';
+      controls.append(minus, quantity, plus);
+      row.append(details, controls);
+      itemsOutput.append(row);
+    });
+  }
+
+  function setTrackerStep(stepIndex: number) {
+    const steps = [...document.querySelectorAll<HTMLElement>('[data-order-step]')];
+    steps.forEach((step, index) => {
+      const state = index < stepIndex ? 'complete' : index === stepIndex ? 'current' : 'upcoming';
+      step.dataset.state = state;
+      const number = step.querySelector<HTMLElement>('.tracker-step-number');
+      if (number) {
+        if (state === 'complete') {
+          const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+          svg.setAttribute('viewBox', '0 0 24 24');
+          svg.setAttribute('aria-hidden', 'true');
+          svg.setAttribute('class', 'h-4 w-4');
+          svg.setAttribute('fill', 'none');
+          svg.setAttribute('stroke', 'currentColor');
+          svg.setAttribute('stroke-width', '2');
+          svg.setAttribute('stroke-linecap', 'round');
+          svg.setAttribute('stroke-linejoin', 'round');
+          const path = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+          path.setAttribute('d', 'm5 12 4 4L19 6');
+          svg.replaceChildren(path);
+          number.replaceChildren(svg);
+        } else number.textContent = String(index + 1);
+      }
+    });
+    const percent = [0, 50, 100][stepIndex] ?? 100;
+    if (trackerProgress) trackerProgress.style.width = `${percent}%`;
+    progressBar?.setAttribute('aria-valuenow', String(percent));
+    if (trackerStatus) {
+      trackerStatus.textContent = ['Pedido recibido en cocina.', 'Estamos preparando tu pedido.', '¡Tu pedido está listo para recoger!'][stepIndex] ?? 'Pedido listo.';
+    }
+  }
+
+  function beginOrderTracking() {
+    trackerTimers.forEach((timer) => window.clearTimeout(timer));
+    trackerTimers = [];
+    if (cartView) cartView.hidden = true;
+    if (trackerView) trackerView.hidden = false;
+    setTrackerStep(0);
+    trackerTimers.push(window.setTimeout(() => setTrackerStep(1), 2600));
+    trackerTimers.push(window.setTimeout(() => {
+      setTrackerStep(2);
+      notify('¡Tu pedido de demostración está listo!');
+    }, 5600));
+  }
+
+  triggers.forEach((triggerButton) => triggerButton.addEventListener('click', () => {
+    activeTrigger = triggerButton;
+    if (dialog && !dialog.open) dialog.showModal();
+    triggers.forEach((button) => button.setAttribute('aria-expanded', 'true'));
+    closeButton?.focus();
+  }));
+  closeButton?.addEventListener('click', () => dialog?.close());
+  trackerClose?.addEventListener('click', () => dialog?.close());
+  dialog?.addEventListener('close', () => {
+    triggers.forEach((button) => button.setAttribute('aria-expanded', 'false'));
+    activeTrigger?.focus();
+  });
+  dialog?.addEventListener('click', (event) => {
+    if (event.target === dialog) dialog?.close();
+  });
+
+  document.addEventListener('click', (event) => {
+    const target = event.target;
+    if (!(target instanceof Element)) return;
+    const addButton = target.closest<HTMLButtonElement>('[data-add-to-cart]');
+    if (addButton) {
+      const id = addButton.dataset.productId;
+      const name = addButton.dataset.productName;
+      const price = Number(addButton.dataset.productPrice);
+      if (!id || !name || !Number.isFinite(price)) return;
+      const current = cart.get(id);
+      cart.set(id, { name, price, quantity: (current?.quantity ?? 0) + 1 });
+      if (cartView) cartView.hidden = false;
+      if (trackerView) trackerView.hidden = true;
+      renderCart();
+      notify(`${name} añadido al carrito.`);
+    }
+    const changeButton = target.closest<HTMLButtonElement>('[data-cart-change]');
+    if (changeButton) {
+      const id = changeButton.dataset.cartChange;
+      const change = Number(changeButton.dataset.change);
+      const current = id ? cart.get(id) : undefined;
+      if (!id || !current || !change) return;
+      const quantity = current.quantity + change;
+      if (quantity <= 0) cart.delete(id);
+      else cart.set(id, { ...current, quantity });
+      renderCart();
+    }
+  });
+
+  checkoutButton?.addEventListener('click', () => {
+    if (!cart.size) return;
+    cart.clear();
+    renderCart();
+    beginOrderTracking();
+    notify('Pedido recibido. Sigue su progreso en el carrito.');
+  });
+</script>
