@@ -1,7 +1,8 @@
-<div id="toast-region" class="toast-region" aria-live="polite" aria-relevant="additions text" aria-atomic="false" aria-label="Notificaciones"></div>
+<div id="toast-region" class="toast-region" aria-live="polite" aria-relevant="additions text" aria-atomic="false" role="region" aria-label="Notificaciones" data-i18n-aria="toast.region"></div><span id="toast-close-template" class="hidden" data-i18n="toast.close">Cerrar notificación</span>
 
 <script>
   const toastRegion = document.querySelector<HTMLElement>('#toast-region');
+  const toastCloseTemplate = document.querySelector<HTMLElement>('#toast-close-template');
   window.addEventListener('app:toast', (event) => {
     const detail = (event as CustomEvent<{ message?: string }>).detail;
     if (!toastRegion || !detail?.message) return;
@@ -14,7 +15,7 @@
     const dismiss = document.createElement('button');
     dismiss.type = 'button';
     dismiss.className = 'focus-ring grid h-8 w-8 shrink-0 place-items-center text-lg text-white/70 transition hover:text-white';
-    dismiss.setAttribute('aria-label', 'Cerrar notificación');
+    dismiss.setAttribute('aria-label', toastCloseTemplate?.textContent ?? 'Cerrar notificación');
     const closeIcon = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
     closeIcon.setAttribute('viewBox', '0 0 24 24');
     closeIcon.setAttribute('aria-hidden', 'true');

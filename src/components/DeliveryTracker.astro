@@ -1,30 +1,30 @@
 <section id="seguimiento" class="bg-[#0a0a0a] px-5 py-20 md:px-10 md:py-28" aria-labelledby="delivery-heading">
   <div class="mx-auto grid max-w-7xl gap-12 md:grid-cols-[.85fr_1.15fr] md:items-start">
-    <div class="reveal"><p class="mb-4 text-[10px] font-black uppercase tracking-[.25em] text-lime">Delivery · seguimiento de muestra</p><h2 id="delivery-heading" class="display text-4xl leading-[.92] md:text-6xl">¿Dónde va<br />mi <span class="text-lime">pedido?</span></h2><p class="mt-6 max-w-lg text-sm leading-6 text-white/60">Consulta el recorrido de un pedido a domicilio con el teléfono asociado. Introduce el número de prueba para ver la experiencia completa.</p>
+    <div class="reveal"><p class="mb-4 text-[10px] font-black uppercase tracking-[.25em] text-lime" data-i18n="delivery.eyebrow">Delivery · seguimiento de muestra</p><h2 id="delivery-heading" class="display text-4xl leading-[.92] md:text-6xl"><span data-i18n="delivery.titleLine1">¿Dónde va</span><br /><span data-i18n="delivery.titleLine2">mi</span> <span class="text-lime" data-i18n="delivery.titleAccent">pedido?</span></h2><p class="mt-6 max-w-lg text-sm leading-6 text-white/60" data-i18n="delivery.description">Consulta el recorrido de un pedido a domicilio con el teléfono asociado. Introduce el número de prueba para ver la experiencia completa.</p>
       <form id="delivery-lookup" class="mt-8 grid gap-4" aria-describedby="delivery-demo-note">
-        <div><label class="mb-2 block text-xs font-bold text-white" for="delivery-phone">Teléfono del pedido</label><input class="form-control" id="delivery-phone" name="telephone" type="tel" autocomplete="tel" inputmode="tel" pattern="[+0-9() .-]{9,22}" maxlength="22" placeholder="000 000 000" required /></div>
-        <div class="flex flex-wrap items-center gap-3"><button type="submit" class="focus-ring inline-flex items-center gap-2 bg-lime px-5 py-4 text-xs font-bold uppercase tracking-wider text-black transition hover:bg-white"><svg aria-hidden="true" viewBox="0 0 24 24" class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="2"><circle cx="10.8" cy="10.8" r="6.8"/><path d="m16 16 5 5"/></svg>Consultar estado</button><button id="delivery-demo-fill" type="button" class="focus-ring border border-white/20 px-4 py-4 text-[10px] font-black uppercase tracking-wider text-white transition hover:border-lime hover:text-lime">Usar número de prueba</button></div>
-        <p id="delivery-demo-note" class="text-[10px] leading-5 text-white/55">Número de prueba: 000 000 000. Tracker ilustrativo; no consulta pedidos reales.</p>
-        <p id="delivery-error" class="hidden text-sm text-rose-300" role="status" aria-live="polite"></p>
+        <div><label class="mb-2 block text-xs font-bold text-white" for="delivery-phone" data-i18n="delivery.phone">Teléfono del pedido</label><input class="form-control" id="delivery-phone" name="telephone" type="tel" autocomplete="tel" inputmode="tel" pattern="[+0-9() .-]{9,22}" maxlength="22" placeholder="000 000 000" required /></div>
+        <div class="flex flex-wrap items-center gap-3"><button type="submit" class="focus-ring inline-flex items-center gap-2 bg-lime px-5 py-4 text-xs font-bold uppercase tracking-wider text-black transition hover:bg-white"><svg aria-hidden="true" viewBox="0 0 24 24" class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="2"><circle cx="10.8" cy="10.8" r="6.8"/><path d="m16 16 5 5"/></svg><span data-i18n="delivery.lookup">Consultar estado</span></button><button id="delivery-demo-fill" type="button" class="focus-ring border border-white/20 px-4 py-4 text-[10px] font-black uppercase tracking-wider text-white transition hover:border-lime hover:text-lime" data-i18n="delivery.demoFill">Usar número de prueba</button></div>
+        <p id="delivery-demo-note" class="text-[10px] leading-5 text-white/55" data-i18n="delivery.demoNote">Número de prueba: 000 000 000. Tracker ilustrativo; no consulta pedidos reales.</p>
+        <p id="delivery-error" class="hidden text-sm text-rose-300" role="status" aria-live="polite" data-i18n="delivery.notFound"></p><span class="hidden" data-delivery-message="0" data-i18n="delivery.step0">Pedido recibido y confirmado</span><span class="hidden" data-delivery-message="1" data-i18n="delivery.step1">Preparándose en cocina</span><span class="hidden" data-delivery-message="2" data-i18n="delivery.step2">En camino con el repartidor</span><span class="hidden" data-delivery-message="3" data-i18n="delivery.complete">Entrega completada.</span><span class="hidden" data-delivery-message="eta" data-i18n="delivery.eta">Tiempo estimado de muestra: 8–12 minutos.</span>
       </form>
     </div>
     <div id="delivery-loading" class="hidden border border-white/10 bg-panel p-5 md:p-7" role="status" aria-live="polite">
-      <span class="sr-only">Consultando el estado del pedido de demostración</span>
+      <span class="sr-only" data-i18n="delivery.loading">Consultando el estado del pedido de demostración</span>
       <div class="skeleton-shimmer h-5 w-2/5 rounded-sm"></div><div class="skeleton-shimmer mt-5 h-3 w-4/5 rounded-sm"></div><div class="skeleton-shimmer mt-3 h-3 w-3/5 rounded-sm"></div>
       <div class="mt-7 grid gap-4">{Array.from({ length: 4 }, () => <div class="flex items-center gap-3"><span class="skeleton-shimmer h-10 w-10 rounded-full"></span><span class="skeleton-shimmer h-3 flex-1 rounded-sm"></span></div>)}</div>
     </div>
     <div id="delivery-result" class="hidden">
       <article class="border border-white/10 bg-panel p-5 md:p-7" aria-labelledby="delivery-result-title">
-        <div class="flex flex-wrap items-start justify-between gap-4"><div><p class="text-[10px] font-black uppercase tracking-[.2em] text-lime">Estado del pedido</p><h3 id="delivery-result-title" class="display mt-2 text-2xl md:text-3xl">Pedido DEMO-2048</h3></div><span class="border border-lime/30 px-3 py-2 text-[9px] font-black uppercase tracking-[.14em] text-lime">En seguimiento</span></div>
+        <div class="flex flex-wrap items-start justify-between gap-4"><div><p class="text-[10px] font-black uppercase tracking-[.2em] text-lime" data-i18n="delivery.resultTitle">Estado del pedido</p><h3 id="delivery-result-title" class="display mt-2 text-2xl md:text-3xl">Pedido DEMO-2048</h3></div><span class="border border-lime/30 px-3 py-2 text-[9px] font-black uppercase tracking-[.14em] text-lime" data-i18n="delivery.following">En seguimiento</span></div>
         <p id="delivery-current-status" class="mt-6 text-sm font-bold text-white" role="status" aria-live="polite">Pedido recibido y confirmado.</p>
-        <div id="delivery-progressbar" class="mt-4 h-2 overflow-hidden bg-white/10" role="progressbar" aria-label="Progreso de entrega" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"><div id="delivery-progress" class="h-full w-0 bg-lime transition-[width] duration-700 ease-out"></div></div>
+        <div id="delivery-progressbar" class="mt-4 h-2 overflow-hidden bg-white/10" role="progressbar" aria-label="Progreso de entrega" data-i18n-aria="delivery.progress" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"><div id="delivery-progress" class="h-full w-0 bg-lime transition-[width] duration-700 ease-out"></div></div>
         <ol class="mt-7 space-y-5">
-          <li class="delivery-step flex gap-4" data-delivery-step="0" data-state="current"><span class="delivery-icon grid h-10 w-10 shrink-0 place-items-center rounded-full border"><svg aria-hidden="true" viewBox="0 0 24 24" class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M7 3.75h7l4 4v12.5H7z"/><path d="M14 3.75v4h4M10 13h5M10 16.5h5"/></svg></span><span><strong class="block text-sm">Pedido recibido y confirmado</strong><small class="mt-1 block text-xs text-white/55">La cocina ya tiene los detalles.</small></span></li>
-          <li class="delivery-step flex gap-4" data-delivery-step="1" data-state="upcoming"><span class="delivery-icon grid h-10 w-10 shrink-0 place-items-center rounded-full border"><svg aria-hidden="true" viewBox="0 0 24 24" class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12.5 21s7-4.4 7-11a4 4 0 0 0-7-2.6A4 4 0 0 0 5.5 10c0 6.6 7 11 7 11Z"/><path d="M10 12h4"/></svg></span><span><strong class="block text-sm">Preparándose en cocina</strong><small class="mt-1 block text-xs text-white/55">Estamos preparando tu pedido.</small></span></li>
-          <li class="delivery-step flex gap-4" data-delivery-step="2" data-state="upcoming"><span class="delivery-icon grid h-10 w-10 shrink-0 place-items-center rounded-full border"><svg aria-hidden="true" viewBox="0 0 24 24" class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="17" r="2.5"/><circle cx="18" cy="17" r="2.5"/><path d="M8.5 17h4l2-6h3.2l2 6M12.5 17l-2-8H7"/><path d="M15 11h-3"/></svg></span><span><strong class="block text-sm">En camino con el repartidor</strong><small id="delivery-arrival-note" class="mt-1 block text-xs text-white/55">El repartidor saldrá en breve.</small></span></li>
-          <li class="delivery-step flex gap-4" data-delivery-step="3" data-state="upcoming"><span class="delivery-icon grid h-10 w-10 shrink-0 place-items-center rounded-full border"><svg aria-hidden="true" viewBox="0 0 24 24" class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="m8 12 2.5 2.5L16.5 9"/></svg></span><span><strong class="block text-sm">Entregado</strong><small class="mt-1 block text-xs text-white/55">Pedido recibido en casa.</small></span></li>
+          <li class="delivery-step flex gap-4" data-delivery-step="0" data-state="current"><span class="delivery-icon grid h-10 w-10 shrink-0 place-items-center rounded-full border"><svg aria-hidden="true" viewBox="0 0 24 24" class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M7 3.75h7l4 4v12.5H7z"/><path d="M14 3.75v4h4M10 13h5M10 16.5h5"/></svg></span><span><strong class="block text-sm" data-i18n="delivery.step0">Pedido recibido y confirmado</strong><small class="mt-1 block text-xs text-white/55" data-i18n="delivery.step0Note">La cocina ya tiene los detalles.</small></span></li>
+          <li class="delivery-step flex gap-4" data-delivery-step="1" data-state="upcoming"><span class="delivery-icon grid h-10 w-10 shrink-0 place-items-center rounded-full border"><svg aria-hidden="true" viewBox="0 0 24 24" class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12.5 21s7-4.4 7-11a4 4 0 0 0-7-2.6A4 4 0 0 0 5.5 10c0 6.6 7 11 7 11Z"/><path d="M10 12h4"/></svg></span><span><strong class="block text-sm" data-i18n="delivery.step1">Preparándose en cocina</strong><small class="mt-1 block text-xs text-white/55" data-i18n="delivery.step1Note">Estamos preparando tu pedido.</small></span></li>
+          <li class="delivery-step flex gap-4" data-delivery-step="2" data-state="upcoming"><span class="delivery-icon grid h-10 w-10 shrink-0 place-items-center rounded-full border"><svg aria-hidden="true" viewBox="0 0 24 24" class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="17" r="2.5"/><circle cx="18" cy="17" r="2.5"/><path d="M8.5 17h4l2-6h3.2l2 6M12.5 17l-2-8H7"/><path d="M15 11h-3"/></svg></span><span><strong class="block text-sm" data-i18n="delivery.step2">En camino con el repartidor</strong><small id="delivery-arrival-note" class="mt-1 block text-xs text-white/55" data-i18n="delivery.step2Note">El repartidor saldrá en breve.</small></span></li>
+          <li class="delivery-step flex gap-4" data-delivery-step="3" data-state="upcoming"><span class="delivery-icon grid h-10 w-10 shrink-0 place-items-center rounded-full border"><svg aria-hidden="true" viewBox="0 0 24 24" class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="m8 12 2.5 2.5L16.5 9"/></svg></span><span><strong class="block text-sm" data-i18n="delivery.step3">Entregado</strong><small class="mt-1 block text-xs text-white/55" data-i18n="delivery.step3Note">Pedido recibido en casa.</small></span></li>
         </ol>
-        <p id="delivery-simulation-note" class="mt-7 border-t border-white/10 pt-4 text-[10px] leading-5 text-white/55">Datos y tiempos de seguimiento simulados para la demo.</p>
+        <p id="delivery-simulation-note" class="mt-7 border-t border-white/10 pt-4 text-[10px] leading-5 text-white/55" data-i18n="delivery.simulation">Datos y tiempos de seguimiento simulados para la demo.</p>
       </article>
     </div>
   </div>
@@ -46,14 +46,12 @@
   let lookupTimer: number | undefined;
 
   const demoOrder = { phone: '000000000', id: 'DEMO-2048' };
-  const deliveryMessages = [
-    'Pedido recibido y confirmado.',
-    'Preparándose en cocina.',
-    'En camino con el repartidor.',
-    'Pedido entregado.'
-  ];
+  let activeDeliveryStep = 0;
+  const deliveryMessages = [...document.querySelectorAll<HTMLElement>('[data-delivery-message]')];
+  const getDeliveryMessage = (key: string) => deliveryMessages.find((message) => message.dataset.deliveryMessage === key)?.textContent ?? '';
 
   function updateDeliveryStep(currentStep: number) {
+    activeDeliveryStep = currentStep;
     deliverySteps.forEach((step, index) => {
       const state = index < currentStep ? 'complete' : index === currentStep ? 'current' : 'upcoming';
       step.dataset.state = state;
@@ -63,16 +61,20 @@
     const percentage = Math.round(((currentStep + 1) / deliverySteps.length) * 100);
     if (deliveryProgress) deliveryProgress.style.width = `${percentage}%`;
     deliveryProgressbar?.setAttribute('aria-valuenow', String(percentage));
-    if (deliveryStatus) deliveryStatus.textContent = deliveryMessages[currentStep] ?? deliveryMessages.at(-1)!;
-    if (arrivalNote && currentStep >= 2) arrivalNote.textContent = currentStep === 2 ? 'Tiempo estimado de muestra: 8–12 minutos.' : 'Entrega completada.';
+    if (deliveryStatus) deliveryStatus.textContent = currentStep === 3 ? getDeliveryMessage("3") : getDeliveryMessage(String(currentStep)) + ".";
+    if (arrivalNote && currentStep >= 2) arrivalNote.textContent = getDeliveryMessage(currentStep === 2 ? 'eta' : '3');
   }
+
+  window.addEventListener('app:language-change', () => {
+    if (deliveryResult && !deliveryResult.classList.contains('hidden')) updateDeliveryStep(activeDeliveryStep);
+  });
 
   demoFill?.addEventListener('click', () => {
     if (deliveryPhone) {
       deliveryPhone.value = '000 000 000';
       deliveryPhone.focus();
     }
-    if (deliveryError) deliveryError.textContent = '';
+    if (deliveryError) { deliveryError.textContent = ''; deliveryError.classList.add('hidden'); }
   });
 
   deliveryForm?.addEventListener('submit', (event) => {
@@ -81,7 +83,7 @@
     if (lookupTimer) window.clearTimeout(lookupTimer);
     deliveryTimers.forEach((timer) => window.clearTimeout(timer));
     deliveryTimers = [];
-    if (deliveryError) deliveryError.textContent = '';
+    if (deliveryError) { deliveryError.textContent = ''; deliveryError.classList.add('hidden'); }
     deliveryResult?.classList.add('hidden');
     deliveryLoading?.classList.remove('hidden');
     const digits = (deliveryPhone?.value ?? '').replace(/\D/g, '');
@@ -89,7 +91,7 @@
     lookupTimer = window.setTimeout(() => {
       deliveryLoading?.classList.add('hidden');
       if (digits !== demoOrder.phone) {
-        if (deliveryError) deliveryError.textContent = 'No encontramos un pedido de demostracion asociado a ese telefono. Prueba con 000 000 000.';
+        if (deliveryError) deliveryError.classList.remove('hidden');
         return;
       }
       deliveryResult?.classList.remove('hidden');
