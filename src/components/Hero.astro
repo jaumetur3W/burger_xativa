@@ -1,19 +1,19 @@
 ---
 import Icon from './Icon.astro';
 ---
-<section id="inicio" class="relative isolate flex min-h-[620px] items-center justify-center overflow-hidden bg-ink px-5 pb-10 pt-24 text-center sm:min-h-[660px] md:min-h-[720px] md:px-10 lg:min-h-[760px]">
+<section id="inicio" class="relative isolate flex min-h-[540px] items-center justify-center overflow-hidden bg-ink pb-8 pt-20 text-center sm:min-h-[590px] md:min-h-[640px] lg:min-h-[680px]">
   <picture class="absolute inset-0 -z-20 block h-full w-full">
-    <source type="image/avif" srcset="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?fit=crop&w=900&q=72&fm=avif 900w, https://images.unsplash.com/photo-1568901346375-23c9450c58cd?fit=crop&w=1500&q=72&fm=avif 1500w, https://images.unsplash.com/photo-1568901346375-23c9450c58cd?fit=crop&w=2200&q=72&fm=avif 2200w" sizes="100vw" />
-    <source type="image/webp" srcset="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?fit=crop&w=900&q=72&fm=webp 900w, https://images.unsplash.com/photo-1568901346375-23c9450c58cd?fit=crop&w=1500&q=72&fm=webp 1500w, https://images.unsplash.com/photo-1568901346375-23c9450c58cd?fit=crop&w=2200&q=72&fm=webp 2200w" sizes="100vw" />
-    <img class="h-full w-full object-cover object-[center_42%] bg-ink opacity-45 md:scale-[.92]" src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?fit=crop&w=1500&q=72&fm=webp" alt="Hamburguesa doble con queso fundido, imagen ilustrativa" fetchpriority="high" loading="eager" decoding="async" width="2200" height="1467" />
+    <source type="image/avif" srcset="https://images.unsplash.com/photo-1571091718767-18b5b1457add?fit=max&w=900&q=72&fm=avif 900w, https://images.unsplash.com/photo-1571091718767-18b5b1457add?fit=max&w=1500&q=72&fm=avif 1500w, https://images.unsplash.com/photo-1571091718767-18b5b1457add?fit=max&w=2200&q=72&fm=avif 2200w" sizes="100vw" />
+    <source type="image/webp" srcset="https://images.unsplash.com/photo-1571091718767-18b5b1457add?fit=max&w=900&q=72&fm=webp 900w, https://images.unsplash.com/photo-1571091718767-18b5b1457add?fit=max&w=1500&q=72&fm=webp 1500w, https://images.unsplash.com/photo-1571091718767-18b5b1457add?fit=max&w=2200&q=72&fm=webp 2200w" sizes="100vw" />
+    <img class="h-full w-full bg-ink object-contain object-center opacity-60 md:object-cover" src="https://images.unsplash.com/photo-1571091718767-18b5b1457add?fit=max&w=1500&q=72&fm=webp" alt="Hamburguesa gourmet completa con pan de sésamo, queso, carne y vegetales" fetchpriority="high" loading="eager" decoding="async" width="2200" height="1467" />
   </picture>
-  <div class="absolute inset-0 -z-10 bg-gradient-to-b from-ink/55 via-ink/25 to-ink"></div><div class="grain pointer-events-none absolute inset-0 -z-10 opacity-20"></div>
-  <div class="mx-auto w-full max-w-7xl">
-    <p class="hero-enter mb-5 inline-flex flex-wrap items-center justify-center gap-2 border border-white/15 bg-ink/75 px-3 py-2 text-[10px] font-black uppercase tracking-[.16em] text-white/80 backdrop-blur [animation-delay:80ms]"><span id="open-status-dot" class="h-2 w-2 rounded-full bg-white/50" aria-hidden="true"></span><span id="open-status" aria-live="polite">Consultando horario…</span><span class="text-white/55">· Xàtiva · DEMO</span></p>
-    <h1 class="hero-enter display kinetic-title mx-auto max-w-full text-[clamp(4.25rem,21vw,21rem)] leading-[.78] text-white [animation-delay:160ms] sm:text-[clamp(7rem,19vw,21rem)]" data-kinetic-title data-title-variant="final">BURGER<span class="text-lime">.</span></h1>
-    <div class="hero-enter mx-auto mt-8 flex max-w-3xl flex-col items-center gap-7 [animation-delay:280ms]">
+  <div class="absolute inset-0 -z-10 bg-gradient-to-b from-ink/75 via-ink/50 to-ink"></div><div class="grain pointer-events-none absolute inset-0 -z-10 opacity-10"></div>
+  <div class="w-full">
+    <p class="hero-enter mb-4 inline-flex flex-wrap items-center justify-center gap-2 text-[10px] font-black uppercase tracking-[.16em] text-white/85 [animation-delay:80ms]"><span id="open-status-dot" class="h-2 w-2 rounded-full bg-white/50" aria-hidden="true"></span><span id="open-status" aria-live="polite">Consultando horario…</span><span class="text-white/55">· Xàtiva · DEMO</span></p>
+    <h1 class="hero-enter display kinetic-title mx-auto w-full max-w-none whitespace-nowrap px-1 text-[clamp(2.925rem,19.8vw,28.8rem)] leading-[.8] text-white [animation-delay:160ms]" data-kinetic-title data-title-variant="final">BURGER<span class="text-lime">.</span></h1>
+    <div class="hero-enter mx-auto mt-6 flex max-w-3xl flex-col items-center gap-6 px-5 [animation-delay:280ms] sm:mt-8 sm:gap-7">
       <p class="max-w-2xl text-base leading-7 text-white/80 md:text-xl md:leading-8" data-i18n="hero.subtitle">Carne a la brasa, queso que se desborda y cero ganas de compartir. La burger que Xàtiva no sabía que necesitaba.</p>
-      <div class="flex flex-wrap justify-center gap-3"><a href="#menu" class="focus-ring inline-flex items-center gap-2 bg-lime px-6 py-4 text-xs font-black uppercase tracking-wider text-ink transition hover:bg-white"><span data-i18n="hero.menu">Ver menú</span><Icon name="chevron-down" /></a><a href="#reservas" class="focus-ring inline-flex items-center gap-2 border border-white/50 bg-black/30 px-6 py-4 text-xs font-black uppercase tracking-wider backdrop-blur transition hover:border-lime hover:text-lime"><span data-i18n="hero.reserve">Reservar o pedir</span><Icon name="arrow-up-right" /></a></div>
+      <div class="flex flex-wrap justify-center gap-3"><a id="hero-menu-cta" href="#menu" class="focus-ring inline-flex items-center gap-2 bg-lime px-6 py-4 text-xs font-bold uppercase tracking-wider text-black transition hover:bg-white"><span data-i18n="hero.menu">Ver menú</span><Icon name="chevron-down" /></a><a href="#reservas" class="focus-ring inline-flex items-center gap-2 border border-white/50 bg-black/30 px-6 py-4 text-xs font-black uppercase tracking-wider backdrop-blur transition hover:border-lime hover:text-lime"><span data-i18n="hero.reserve">Reservar o pedir</span><Icon name="arrow-up-right" /></a></div>
     </div>
     <p class="hero-enter mt-12 text-[10px] uppercase tracking-[.18em] text-white/55 [animation-delay:400ms]">Proyecto de portfolio · Marca y datos de ejemplo</p>
   </div>
@@ -57,3 +57,9 @@ import Icon from './Icon.astro';
     }, 145);
   }
 </script>
+
+<style>
+  #hero-menu-cta { color: #000000; font-weight: 700; }
+  #hero-menu-cta > span,
+  #hero-menu-cta svg { color: #000000; }
+</style>

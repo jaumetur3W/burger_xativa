@@ -4,8 +4,24 @@ import Icon from './Icon.astro';
 const reviewUrl = 'https://search.google.com/local/writereview?placeid=PLACE_ID_DEMO';
 ---
 <section id="resenas" class="px-5 py-16 md:px-10 md:py-20" aria-labelledby="review-heading">
-  <div class="reveal mx-auto flex max-w-7xl flex-col items-start justify-between gap-7 border border-white/10 bg-panel p-6 md:flex-row md:items-center md:p-9">
-    <div><p class="mb-3 text-[10px] font-black uppercase tracking-[.25em] text-lime">La comunidad también cocina esto</p><h2 id="review-heading" class="display text-3xl md:text-4xl">¿Te gustó? Cuéntaselo a Google.</h2><p class="mt-3 max-w-2xl text-sm leading-6 text-white/55">Las opiniones ayudan a que más gente encuentre el local. En esta plantilla, configura el Place ID real para activar el enlace correcto.</p></div>
-    <a class="focus-ring inline-flex shrink-0 items-center gap-2 bg-lime px-5 py-4 text-xs font-black uppercase tracking-wider text-ink transition hover:bg-white" href={reviewUrl} target="_blank" rel="noopener noreferrer">Dejar reseña en Google <Icon name="arrow-up-right" /></a>
+  <div class="mx-auto max-w-7xl">
+    <div class="reveal flex flex-col items-start justify-between gap-7 border border-white/10 bg-panel p-6 md:flex-row md:items-center md:p-9">
+      <div><p class="mb-3 text-[10px] font-black uppercase tracking-[.25em] text-lime">La comunidad también cocina esto</p><h2 id="review-heading" class="display text-3xl md:text-4xl">¿Te gustó? Cuéntaselo a Google.</h2><p class="mt-3 max-w-2xl text-sm leading-6 text-white/65">Las opiniones ayudan a que más gente encuentre el local. Configura el Place ID real para activar el enlace correcto.</p></div>
+      <a class="focus-ring inline-flex shrink-0 items-center gap-2 bg-lime px-5 py-4 text-xs font-black uppercase tracking-wider text-black transition hover:bg-white" href={reviewUrl} target="_blank" rel="noopener noreferrer">Dejar reseña en Google <Icon name="arrow-up-right" /></a>
+    </div>
+    <div class="reveal mt-5 grid gap-3 md:grid-cols-3" aria-label="Valoraciones de ejemplo para revisión visual">
+      {[
+        { quote: 'La burger llegó con el pan tostado y el queso justo como me gusta.', name: 'Cliente de muestra 01' },
+        { quote: 'Las patatas y la salsa de la casa desaparecieron antes que las burgers.', name: 'Cliente de muestra 02' },
+        { quote: 'Buen producto, porciones generosas y una carta fácil de pedir.', name: 'Cliente de muestra 03' },
+      ].map((review) => <article class="border border-white/10 bg-panel p-5">
+        <p class="mb-3 text-[9px] font-black uppercase tracking-[.18em] text-lime">Valoración ilustrativa · no es una reseña real</p>
+        <div class="mb-3 flex gap-1 text-lime" role="img" aria-label="Cinco estrellas, muestra de diseño">
+          {Array.from({ length: 5 }).map(() => <svg aria-hidden="true" viewBox="0 0 20 20" class="h-4 w-4" fill="currentColor"><path d="m10 1.6 2.55 5.17 5.7.83-4.12 4.02.97 5.68L10 14.62l-5.1 2.68.97-5.68L1.75 7.6l5.7-.83L10 1.6Z" /></svg>)}
+        </div>
+        <blockquote class="text-sm leading-6 text-white/85">“{review.quote}”</blockquote>
+        <p class="mt-4 text-[10px] font-bold uppercase tracking-[.12em] text-white/55">{review.name}</p>
+      </article>)}
+    </div>
   </div>
 </section>
