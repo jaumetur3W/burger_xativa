@@ -10,7 +10,7 @@ import Icon from './Icon.astro';
   <div class="absolute inset-0 -z-10 bg-gradient-to-b from-ink/55 via-ink/25 to-ink"></div><div class="grain pointer-events-none absolute inset-0 -z-10 opacity-20"></div>
   <div class="mx-auto w-full max-w-7xl">
     <p class="hero-enter mb-5 inline-flex flex-wrap items-center justify-center gap-2 border border-white/15 bg-ink/75 px-3 py-2 text-[10px] font-black uppercase tracking-[.16em] text-white/80 backdrop-blur [animation-delay:80ms]"><span id="open-status-dot" class="h-2 w-2 rounded-full bg-white/50" aria-hidden="true"></span><span id="open-status" aria-live="polite">Consultando horario…</span><span class="text-white/55">· Xàtiva · DEMO</span></p>
-    <h1 class="hero-enter display mx-auto text-[clamp(5.2rem,22vw,20rem)] leading-[.72] text-white [animation-delay:160ms]">BURGER<span class="text-lime">.</span></h1>
+    <h1 class="hero-enter display kinetic-title mx-auto text-[clamp(5.2rem,22vw,20rem)] leading-[.72] text-white [animation-delay:160ms]" data-kinetic-title data-title-variant="final">BURGER<span class="text-lime">.</span></h1>
     <div class="hero-enter mx-auto mt-8 flex max-w-3xl flex-col items-center gap-7 [animation-delay:280ms]">
       <p class="max-w-2xl text-base leading-7 text-white/80 md:text-xl md:leading-8">Carne a la brasa, queso que se desborda y cero ganas de compartir. La burger que Xàtiva no sabía que necesitaba.</p>
       <div class="flex flex-wrap justify-center gap-3"><a href="#menu" class="focus-ring inline-flex items-center gap-2 bg-lime px-6 py-4 text-xs font-black uppercase tracking-wider text-ink transition hover:bg-white">Ver menú <Icon name="chevron-down" /></a><a href="#reservas" class="focus-ring inline-flex items-center gap-2 border border-white/50 bg-black/30 px-6 py-4 text-xs font-black uppercase tracking-wider backdrop-blur transition hover:border-lime hover:text-lime">Reservar o pedir <Icon name="arrow-up-right" /></a></div>
@@ -38,4 +38,18 @@ import Icon from './Icon.astro';
   }
   updateOpenStatus();
   window.setInterval(updateOpenStatus, 60_000);
+
+  const title = document.querySelector<HTMLElement>('[data-kinetic-title]');
+  if (title && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    const typefaces = ['serif', 'mono', 'slab', 'italic', 'industrial', 'mono', 'serif', 'final'];
+    let frame = 0;
+    const shutter = window.setInterval(() => {
+      title.dataset.titleVariant = typefaces[frame] ?? 'final';
+      frame += 1;
+      if (frame >= typefaces.length) {
+        window.clearInterval(shutter);
+        title.dataset.titleVariant = 'final';
+      }
+    }, 145);
+  }
 </script>
