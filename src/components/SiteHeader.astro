@@ -5,18 +5,19 @@
   <div class="mx-auto flex max-w-7xl items-center justify-between gap-4 px-5 py-3 md:px-10">
     <a class="display shrink-0 text-sm text-white md:text-base" href="#inicio" aria-label="Burger Xàtiva Demo, inicio">BURGER<span class="text-lime">.</span> XÀTIVA <span class="text-lime">DEMO</span></a>
     <nav class="hidden items-center gap-5 lg:flex" aria-label="Navegación principal">
-      <a class="header-link" href="#menu">Menú</a><a class="header-link" href="#promociones">Promociones</a><a class="header-link" href="#reservas">Reservas</a><a class="header-link" href="#contacto">Ubicación</a><a class="header-link" href="#faq">FAQ</a>
+      <a class="header-link" href="#menu" data-i18n="nav.menu">Menú</a><a class="header-link" href="#promociones" data-i18n="nav.promos">Promociones</a><a class="header-link" href="#reservas" data-i18n="nav.reservations">Reservas</a><a class="header-link" href="#contacto" data-i18n="nav.location">Ubicación</a><a class="header-link" href="#faq">FAQ</a>
     </nav>
     <div class="flex shrink-0 items-center gap-2">
-      <a class="focus-ring hidden border border-white/20 px-4 py-3 text-[10px] font-black uppercase tracking-wider transition hover:border-lime hover:text-lime sm:inline-flex" href="#reservas">Reservar</a>
+      <a class="focus-ring hidden border border-white/20 px-4 py-3 text-[10px] font-black uppercase tracking-wider transition hover:border-lime hover:text-lime sm:inline-flex" href="#reservas" data-i18n="nav.book">Reservar</a>
+      <label class="sr-only" for="language-select">Seleccionar idioma</label><select id="language-select" class="focus-ring h-10 w-[3.6rem] border border-white/20 bg-ink px-2 text-[10px] font-black text-white" aria-label="Seleccionar idioma"><option value="es">ES</option><option value="va">VA</option></select>
       <button type="button" data-cart-trigger class="focus-ring inline-flex items-center gap-2 bg-lime px-3 py-3 text-[10px] font-black uppercase tracking-wider text-ink transition hover:bg-white" aria-haspopup="dialog" aria-controls="cart-dialog" aria-expanded="false" aria-label="Abrir carrito, 0 productos">
         <svg aria-hidden="true" viewBox="0 0 24 24" class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 8h14l1 13H4L5 8Z"/><path d="M9 9V6a3 3 0 0 1 6 0v3"/></svg>
-        <span class="hidden sm:inline">Carrito</span><span id="header-cart-count" class="grid h-5 min-w-5 place-items-center rounded-full bg-ink px-1 text-[9px] text-lime" aria-label="0 productos">0</span>
+        <span class="hidden sm:inline" data-i18n="nav.cart">Carrito</span><span id="header-cart-count" class="grid h-5 min-w-5 place-items-center rounded-full bg-ink px-1 text-[9px] text-lime" aria-label="0 productos">0</span>
       </button>
     </div>
   </div>
   <nav class="scrollbar-none flex gap-5 overflow-x-auto border-t border-white/5 px-5 py-2 lg:hidden" aria-label="Navegación rápida">
-    <a class="header-link" href="#menu">Menú</a><a class="header-link" href="#promociones">Promociones</a><a class="header-link" href="#reservas">Reservas</a><a class="header-link" href="#contacto">Ubicación</a><a class="header-link" href="#faq">FAQ</a>
+    <a class="header-link" href="#menu" data-i18n="nav.menu">Menú</a><a class="header-link" href="#promociones" data-i18n="nav.promos">Promociones</a><a class="header-link" href="#reservas" data-i18n="nav.reservations">Reservas</a><a class="header-link" href="#contacto" data-i18n="nav.location">Ubicación</a><a class="header-link" href="#faq">FAQ</a>
   </nav>
 </header>
 <style>

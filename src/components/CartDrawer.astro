@@ -6,13 +6,13 @@ import Icon from './Icon.astro';
   <span>Carrito</span><span id="cart-count" class="grid h-6 min-w-6 place-items-center rounded-full bg-ink px-1 text-[10px] font-black text-lime" aria-label="0 productos">0</span>
 </button>
 
-<dialog id="cart-dialog" class="cart-dialog fixed inset-y-0 right-0 m-0 h-full max-h-none w-full max-w-md border-0 bg-ink p-0 text-white shadow-2xl" aria-labelledby="cart-title">
+<dialog id="cart-dialog" class="cart-dialog fixed inset-y-0 right-0 m-0 h-full max-h-none w-full max-w-md border-0 bg-ink p-0 text-white shadow-2xl" role="dialog" aria-modal="true" aria-labelledby="cart-title">
   <div class="flex h-full flex-col">
-    <header class="flex items-center justify-between border-b border-white/10 px-5 py-5"><div><p class="text-[10px] font-black uppercase tracking-[.2em] text-lime">Tu pedido · demo</p><h2 id="cart-title" class="display mt-1 text-2xl">El carrito</h2></div><button id="cart-close" type="button" class="focus-ring grid h-11 w-11 place-items-center border border-white/20 text-white transition hover:border-lime hover:text-lime" aria-label="Cerrar carrito"><Icon name="close" class="h-5 w-5" /></button></header>
+    <header class="flex items-center justify-between border-b border-white/10 px-5 py-5"><div><p class="text-[10px] font-black uppercase tracking-[.2em] text-lime" data-i18n="cart.eyebrow">Tu pedido · demo</p><h2 id="cart-title" class="display mt-1 text-2xl" data-i18n="cart.title">El carrito</h2></div><button id="cart-close" type="button" class="focus-ring grid h-11 w-11 place-items-center border border-white/20 text-white transition hover:border-lime hover:text-lime" aria-label="Cerrar carrito"><Icon name="close" class="h-5 w-5" /></button></header>
     <section id="cart-view" class="flex min-h-0 flex-1 flex-col" aria-label="Productos del carrito">
-      <div id="cart-items" class="min-h-0 flex-1 overflow-y-auto px-5 py-4" aria-live="polite"><p id="cart-empty" class="py-12 text-center text-sm text-white/55">Todavía no has añadido nada. El antojo empieza en la carta.</p></div>
-      <section class="mx-5 mb-4 border border-white/10 bg-panel p-4" aria-label="Progreso del club de fidelización"><div class="mb-2 flex items-center justify-between gap-3"><p class="text-xs font-bold">Recompensa de la casa</p><span id="loyalty-count" class="text-[10px] font-black text-lime">0/5</span></div><p id="loyalty-message" class="mb-3 text-xs leading-5 text-white/55">Te faltan 5 productos para un postre gratis.</p><div class="reward-track" role="progressbar" aria-label="Progreso para un postre de cortesía" aria-valuemin="0" aria-valuemax="5" aria-valuenow="0"><div id="loyalty-fill" class="reward-fill w-0"></div></div><p class="mt-2 text-[9px] text-white/55">Recompensa ilustrativa; se activaría al integrar el sistema de fidelización.</p></section>
-      <footer class="border-t border-white/10 px-5 py-5"><div class="mb-4 flex items-center justify-between text-sm"><span class="text-white/60">Total orientativo</span><strong id="cart-total" class="text-lg text-lime">0,00 €</strong></div><button id="checkout-button" type="button" class="focus-ring inline-flex w-full items-center justify-center gap-2 bg-lime px-5 py-4 text-xs font-black uppercase tracking-wider text-ink transition hover:bg-white disabled:cursor-not-allowed disabled:opacity-40" disabled>Finalizar pedido <Icon name="arrow-up-right" /></button><p class="mt-3 text-center text-[10px] text-white/55">Pedido de demostración: no se procesa ningún pago.</p></footer>
+      <div id="cart-items" class="min-h-0 flex-1 overflow-y-auto px-5 py-4" aria-live="polite"><p id="cart-empty" data-i18n="cart.empty" class="py-12 text-center text-sm text-white/55">Todavía no has añadido nada. El antojo empieza en la carta.</p></div>
+      <section class="mx-5 mb-4 border border-white/10 bg-panel p-4" aria-label="Progreso del club de fidelización"><div class="mb-2 flex items-center justify-between gap-3"><p class="text-xs font-bold" data-i18n="cart.reward">Recompensa de la casa</p><span id="loyalty-count" class="text-[10px] font-black text-lime">0/5</span></div><p id="loyalty-message" class="mb-3 text-xs leading-5 text-white/55">Te faltan 5 productos para un postre gratis.</p><div class="reward-track" role="progressbar" aria-label="Progreso para un postre de cortesía" aria-valuemin="0" aria-valuemax="5" aria-valuenow="0"><div id="loyalty-fill" class="reward-fill w-0"></div></div><p class="mt-2 text-[9px] text-white/55" data-i18n="cart.rewardNote">Recompensa ilustrativa; se activaría al integrar el sistema de fidelización.</p></section>
+      <footer class="border-t border-white/10 px-5 py-5"><div class="mb-4 flex items-center justify-between text-sm"><span class="text-white/60" data-i18n="cart.total">Total orientativo</span><strong id="cart-total" class="text-lg text-lime">0,00 €</strong></div><button id="checkout-button" type="button" class="focus-ring inline-flex w-full items-center justify-center gap-2 bg-lime px-5 py-4 text-xs font-black uppercase tracking-wider text-ink transition hover:bg-white disabled:cursor-not-allowed disabled:opacity-40" disabled><span data-i18n="cart.checkout">Finalizar pedido</span><Icon name="arrow-up-right" /></button><p class="mt-3 text-center text-[10px] text-white/55" data-i18n="cart.paymentNote">Pedido de demostración: no se procesa ningún pago.</p></footer>
     </section>
     <section id="order-tracker" class="min-h-0 flex-1 overflow-y-auto px-5 py-7" aria-labelledby="tracker-title" hidden>
       <p class="text-[10px] font-black uppercase tracking-[.2em] text-lime">Seguimiento · simulación</p>
@@ -49,6 +49,7 @@ import Icon from './Icon.astro';
   const trackerProgress = document.querySelector<HTMLElement>('#tracker-progress');
   const progressBar = document.querySelector<HTMLElement>('#order-progressbar');
   const trackerClose = document.querySelector<HTMLButtonElement>('#tracker-close');
+  const cartStorageKey = 'burger-demo-cart-v1';
   const cart = new Map<string, { name: string; price: number; quantity: number }>();
   const euros = new Intl.NumberFormat('es-ES', { style: 'currency', currency: 'EUR' });
   let trackerTimers: number[] = [];
@@ -56,6 +57,34 @@ import Icon from './Icon.astro';
 
   function notify(message: string) {
     window.dispatchEvent(new CustomEvent('app:toast', { detail: { message } }));
+  }
+  const isValencian = () => document.documentElement.lang === 'ca-valencia';
+
+  function restoreCart() {
+    try {
+      const stored = localStorage.getItem(cartStorageKey);
+      if (!stored) return;
+      const entries: unknown = JSON.parse(stored);
+      if (!Array.isArray(entries)) return;
+      entries.forEach((entry) => {
+        if (!Array.isArray(entry) || entry.length !== 2) return;
+        const [id, item] = entry as [unknown, unknown];
+        if (typeof id !== 'string' || !id || typeof item !== 'object' || item === null) return;
+        const candidate = item as { name?: unknown; price?: unknown; quantity?: unknown };
+        if (typeof candidate.name !== 'string' || typeof candidate.price !== 'number' || !Number.isFinite(candidate.price) || candidate.price < 0 || !Number.isInteger(candidate.quantity) || (candidate.quantity as number) < 1) return;
+        cart.set(id.slice(0, 120), { name: candidate.name.slice(0, 160), price: candidate.price, quantity: Math.min(candidate.quantity as number, 99) });
+      });
+    } catch {
+      try { localStorage.removeItem(cartStorageKey); } catch { /* Storage puede estar deshabilitado. */ }
+    }
+  }
+
+  function persistCart() {
+    try {
+      localStorage.setItem(cartStorageKey, JSON.stringify([...cart.entries()]));
+    } catch {
+      notify('No se pudo guardar el carrito en este navegador.');
+    }
   }
 
   function renderCart() {
@@ -65,17 +94,23 @@ import Icon from './Icon.astro';
     const total = [...cart.values()].reduce((sum, item) => sum + item.price * item.quantity, 0);
     countOutputs.forEach((output) => {
       output.textContent = String(count);
-      output.setAttribute('aria-label', `${count} ${count === 1 ? 'producto' : 'productos'}`);
+      output.setAttribute('aria-label', isValencian()
+        ? `${count} ${count === 1 ? 'producte' : 'productes'}`
+        : `${count} ${count === 1 ? 'producto' : 'productos'}`);
     });
-    triggers.forEach((button) => button.setAttribute('aria-label', `Abrir carrito, ${count} ${count === 1 ? 'producto' : 'productos'}`));
+    triggers.forEach((button) => button.setAttribute('aria-label', isValencian()
+      ? `Obrir cistella, ${count} ${count === 1 ? 'producte' : 'productes'}`
+      : `Abrir carrito, ${count} ${count === 1 ? 'producto' : 'productos'}`));
     totalOutput.textContent = euros.format(total);
     emptyMessage.hidden = count > 0;
     checkoutButton.disabled = count === 0;
     const rewardCount = Math.min(count, 5);
     if (loyaltyCount) loyaltyCount.textContent = `${rewardCount}/5`;
     if (loyaltyMessage) loyaltyMessage.textContent = count >= 5
-      ? '¡Postre gratis desbloqueado! (recompensa de demo)'
-      : `Te faltan ${5 - count} ${5 - count === 1 ? 'producto' : 'productos'} para un postre gratis.`;
+      ? (isValencian() ? 'Postre gratuït desbloquejat! (recompensa de demo)' : '¡Postre gratis desbloqueado! (recompensa de demo)')
+      : isValencian()
+        ? `Et ${5 - count === 1 ? 'falta' : 'falten'} ${5 - count} ${5 - count === 1 ? 'producte' : 'productes'} per a un postre gratuït.`
+        : `Te faltan ${5 - count} ${5 - count === 1 ? 'producto' : 'productos'} para un postre gratis.`;
     if (loyaltyFill) loyaltyFill.style.width = `${rewardCount * 20}%`;
     loyaltyProgress?.setAttribute('aria-valuenow', String(rewardCount));
 
@@ -137,7 +172,9 @@ import Icon from './Icon.astro';
     if (trackerProgress) trackerProgress.style.width = `${percent}%`;
     progressBar?.setAttribute('aria-valuenow', String(percent));
     if (trackerStatus) {
-      trackerStatus.textContent = ['Pedido recibido en cocina.', 'Estamos preparando tu pedido.', '¡Tu pedido está listo para recoger!'][stepIndex] ?? 'Pedido listo.';
+      trackerStatus.textContent = isValencian()
+        ? ['Comanda rebuda a cuina.', 'Estem preparant la teua comanda.', 'La teua comanda està preparada per a recollir!'][stepIndex] ?? 'Comanda preparada.'
+        : ['Pedido recibido en cocina.', 'Estamos preparando tu pedido.', '¡Tu pedido está listo para recoger!'][stepIndex] ?? 'Pedido listo.';
     }
   }
 
@@ -150,7 +187,7 @@ import Icon from './Icon.astro';
     trackerTimers.push(window.setTimeout(() => setTrackerStep(1), 2600));
     trackerTimers.push(window.setTimeout(() => {
       setTrackerStep(2);
-      notify('¡Tu pedido de demostración está listo!');
+      notify(isValencian() ? 'La teua comanda de demostració ja està preparada.' : '¡Tu pedido de demostración está listo!');
     }, 5600));
   }
 
@@ -180,11 +217,12 @@ import Icon from './Icon.astro';
       const price = Number(addButton.dataset.productPrice);
       if (!id || !name || !Number.isFinite(price)) return;
       const current = cart.get(id);
-      cart.set(id, { name, price, quantity: (current?.quantity ?? 0) + 1 });
+      cart.set(id, { name, price, quantity: Math.min((current?.quantity ?? 0) + 1, 99) });
+      persistCart();
       if (cartView) cartView.hidden = false;
       if (trackerView) trackerView.hidden = true;
       renderCart();
-      notify(`${name} añadido al carrito.`);
+      notify(isValencian() ? `${name} afegida a la cistella.` : `${name} añadido al carrito.`);
     }
     const changeButton = target.closest<HTMLButtonElement>('[data-cart-change]');
     if (changeButton) {
@@ -195,6 +233,7 @@ import Icon from './Icon.astro';
       const quantity = current.quantity + change;
       if (quantity <= 0) cart.delete(id);
       else cart.set(id, { ...current, quantity });
+      persistCart();
       renderCart();
     }
   });
@@ -202,8 +241,18 @@ import Icon from './Icon.astro';
   checkoutButton?.addEventListener('click', () => {
     if (!cart.size) return;
     cart.clear();
+    try { localStorage.removeItem(cartStorageKey); } catch { /* La compra de demo sigue aunque el almacenamiento esté bloqueado. */ }
     renderCart();
     beginOrderTracking();
-    notify('Pedido recibido. Sigue su progreso en el carrito.');
+    notify(isValencian() ? 'Comanda rebuda. Consulta’n el progrés a la cistella.' : 'Pedido recibido. Sigue su progreso en el carrito.');
   });
+  restoreCart();
+  renderCart();
+  window.addEventListener('storage', (event) => {
+    if (event.key && event.key !== cartStorageKey) return;
+    cart.clear();
+    restoreCart();
+    renderCart();
+  });
+  window.addEventListener('app:language-change', renderCart);
 </script>

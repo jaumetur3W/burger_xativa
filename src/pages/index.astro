@@ -15,12 +15,17 @@ import VipClub from '../components/VipClub.astro';
 import ZeroCommissions from '../components/ZeroCommissions.astro';
 import GoogleReviews from '../components/GoogleReviews.astro';
 import DeliveryTracker from '../components/DeliveryTracker.astro';
+import BurgerSpotlight from '../components/BurgerSpotlight.astro';
+import SecretMenu from '../components/SecretMenu.astro';
+import ArchitectureBadge from '../components/ArchitectureBadge.astro';
 ---
 <BaseLayout>
   <SiteHeader />
   <main id="contenido">
     <Hero />
+    <BurgerSpotlight />
     <MenuGrid />
+    <SecretMenu />
     <Experience />
     <ZeroCommissions />
     <QrMenu />
@@ -31,6 +36,7 @@ import DeliveryTracker from '../components/DeliveryTracker.astro';
     <FAQ />
   </main>
   <SiteFooter />
+  <ArchitectureBadge />
   <MobileCTA />
   <CartDrawer />
   <ToastHub />

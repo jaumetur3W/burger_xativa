@@ -27,6 +27,7 @@ img { display: block; }
 .form-control:focus-visible { outline: 2px solid #ffff00; outline-offset: 2px; border-color: #ffff00; }
 .form-control option { background: #0a0a0a; color: #fff; }
 .cart-dialog::backdrop { background: rgb(0 0 0 / .72); backdrop-filter: blur(3px); }
+.secret-dialog::backdrop { background: rgb(0 0 0 / .78); backdrop-filter: blur(4px); }
 .cart-dialog[open] { animation: drawer-in .28s cubic-bezier(.2,.7,.25,1) both; }
 @keyframes drawer-in { from { opacity: .6; transform: translateX(32px); } to { opacity: 1; transform: translateX(0); } }
 .food-card.menu-filter-out { opacity: 0; transform: translateY(8px) scale(.98); pointer-events: none; }
@@ -46,6 +47,13 @@ img { display: block; }
 .reward-track { height: .5rem; overflow: hidden; background: rgb(255 255 255 / .12); }
 .reward-fill { height: 100%; background: #ffff00; transition: width .35s ease; }
 .growth-no-commission { background: #ffff00; color: #000; }
+.choice-tile, .extra-choice { display: flex; min-height: 48px; align-items: center; gap: .65rem; border: 1px solid rgb(255 255 255 / .18); background: #121212; padding: .75rem; color: #f5f4ed; font-size: .75rem; }
+.choice-tile:has(input:checked), .extra-choice:has(input:checked) { border-color: #ffff00; }
+.choice-tile input, .extra-choice input { accent-color: #ffff00; }
+.extra-choice strong { display: block; margin-top: .25rem; color: #ffff00; font-size: .65rem; }
+.architecture-badge > div { position: absolute; bottom: calc(100% + .5rem); left: 0; }
+.skeleton-shimmer { background: linear-gradient(90deg, #1a1a1a 20%, #29291f 45%, #1a1a1a 70%); background-size: 220% 100%; animation: skeleton-shift 1.25s ease-in-out infinite; }
+@keyframes skeleton-shift { to { background-position-x: -220%; } }
 .toast-message.toast-leave { animation: toast-out .18s ease-in both; }
 @keyframes toast-in { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }
 @keyframes toast-out { to { opacity: 0; transform: translateY(8px); } }
@@ -53,12 +61,11 @@ img { display: block; }
 .hero-enter { animation: hero-enter .85s cubic-bezier(.2,.75,.25,1) both; }
 @keyframes hero-enter { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: translateY(0); } }
 .kinetic-title { transform-origin: center; animation: hero-enter .85s cubic-bezier(.2,.75,.25,1) both, title-shutter 1.35s cubic-bezier(.2,.75,.25,1) .08s both; }
-.kinetic-title[data-title-variant="serif"] { font-family: Georgia, "Times New Roman", serif; font-weight: 900; letter-spacing: -.045em; }
-.kinetic-title[data-title-variant="mono"] { font-family: "Courier New", monospace; font-weight: 900; letter-spacing: -.09em; }
-.kinetic-title[data-title-variant="slab"] { font-family: Rockwell, "Arial Black", serif; font-weight: 900; letter-spacing: -.08em; }
-.kinetic-title[data-title-variant="italic"] { font-family: Impact, Haettenschweiler, sans-serif; font-style: italic; letter-spacing: -.075em; }
-.kinetic-title[data-title-variant="industrial"] { font-family: "Arial Narrow", Impact, sans-serif; font-weight: 900; letter-spacing: -.055em; }
-.kinetic-title[data-title-variant="final"] { font-family: "Arial Black", Impact, sans-serif; font-style: normal; letter-spacing: -.065em; }
+.kinetic-title[data-title-variant="geometric"] { font-family: system-ui, Arial, sans-serif; font-weight: 1000; font-style: normal; letter-spacing: -.085em; }
+.kinetic-title[data-title-variant="condensed"] { font-family: "Arial Narrow", Impact, Arial, sans-serif; font-weight: 900; font-style: normal; letter-spacing: -.045em; }
+.kinetic-title[data-title-variant="industrial"] { font-family: "Arial Black", Arial, sans-serif; font-weight: 900; font-style: normal; letter-spacing: -.075em; }
+.kinetic-title[data-title-variant="wide"] { font-family: system-ui, "Arial Black", Arial, sans-serif; font-weight: 1000; font-style: normal; letter-spacing: -.095em; }
+.kinetic-title[data-title-variant="final"] { font-family: "Arial Black", system-ui, Arial, sans-serif; font-weight: 1000; font-style: normal; letter-spacing: -.075em; }
 @keyframes title-shutter { 0% { filter: blur(5px); transform: scaleX(.94); } 38% { filter: blur(0); transform: scaleX(1.015); } 68% { transform: scaleX(.995); } 100% { filter: none; transform: none; } }
 .reveal-ready .reveal { opacity: 0; transform: translateY(20px); transition: opacity .55s ease, transform .55s cubic-bezier(.2,.7,.25,1); }
 .reveal-ready .reveal.is-visible { opacity: 1; transform: translateY(0); }

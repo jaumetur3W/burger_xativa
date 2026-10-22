@@ -38,5 +38,5 @@ const schema = {
     <title>{title}</title>
     <script type="application/ld+json" set:html={JSON.stringify(schema)} />
   </head>
-  <body><slot /><script>import '../scripts/scroll-reveal';</script></body>
+  <body><slot /><script>import '../scripts/scroll-reveal'; import '../scripts/dialog-focus'; import '../scripts/i18n';</script></body>
 </html>
