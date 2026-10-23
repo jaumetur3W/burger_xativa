@@ -3,24 +3,24 @@ import logo from '../logo.png';
 ---
 <a href="#contenido" class="focus-ring sr-only fixed left-3 top-3 z-[60] bg-lime px-4 py-3 text-xs font-bold uppercase text-black focus:not-sr-only" data-i18n="header.skip">Saltar al contenido</a>
 <header class="sticky top-0 z-50 border-b border-white/10 bg-ink/95 backdrop-blur-md">
-  <div class="mx-auto flex max-w-7xl items-center justify-between gap-4 px-5 py-3 md:px-10">
-    <a class="display inline-flex shrink-0 items-center gap-2 text-xs text-white md:gap-3 md:text-sm" href="#inicio" aria-label="Burger Xàtiva Demo, inicio" data-i18n-aria="header.home">
-      <img src={logo.src} alt="Burger Xàtiva Logo" width={logo.width} height={logo.height} class="h-7 w-auto md:h-8" />
-      <span>BURGER<span class="text-lime">.</span> XÀTIVA <span class="text-lime">DEMO</span></span>
+  <div class="mx-auto flex max-w-7xl items-center justify-between gap-2 px-4 py-2.5 sm:px-6 sm:py-3 md:gap-4 md:px-10">
+    <a class="display inline-flex shrink-0 items-center gap-1.5 text-xs text-white sm:gap-2 md:gap-3 md:text-sm" href="#inicio" aria-label="Burger Xàtiva Demo, inicio" data-i18n-aria="header.home">
+      <img src={logo.src} alt="Burger Xàtiva Logo" width={logo.width} height={logo.height} class="h-6 w-auto sm:h-7 md:h-8" />
+      <span class="truncate">BURGER<span class="text-lime">.</span> XÀTIVA <span class="hidden xs:inline text-lime">DEMO</span></span>
     </a>
     <nav class="hidden items-center gap-5 lg:flex" aria-label="Navegación principal" data-i18n-aria="header.primaryNav">
       <a class="header-link" href="#menu" data-i18n="nav.menu">Menú</a><a class="header-link" href="#fotos" data-i18n="nav.photos">Fotos</a><a class="header-link" href="#promociones" data-i18n="nav.promos">Promociones</a><a class="header-link" href="#reservas" data-i18n="nav.reservations">Reservas</a><a class="header-link" href="#contacto" data-i18n="nav.location">Ubicación</a><a class="header-link" href="#faq" data-i18n="nav.faq">FAQ</a>
     </nav>
-    <div class="flex shrink-0 items-center gap-2">
-      <a class="focus-ring hidden border border-white/20 px-4 py-3 text-[10px] font-black uppercase tracking-wider transition hover:border-lime hover:text-lime sm:inline-flex" href="#reservas" data-i18n="nav.book">Reservar</a>
-      <label class="sr-only" for="language-select" data-i18n="header.language">Seleccionar idioma</label><select id="language-select" class="focus-ring h-10 w-[3.6rem] border border-white/20 bg-ink px-2 text-[10px] font-black text-white" aria-label="Seleccionar idioma" data-i18n-aria="header.language"><option value="es">ES</option><option value="va">VA</option></select>
-      <button type="button" data-cart-trigger class="focus-ring inline-flex items-center gap-2 bg-lime px-3 py-3 text-[10px] font-bold uppercase tracking-wider text-black transition hover:bg-white" aria-haspopup="dialog" aria-controls="cart-dialog" aria-expanded="false" aria-label="Carrito, abrir carrito, 0 productos">
+    <div class="flex shrink-0 items-center gap-1.5 sm:gap-2">
+      <a class="focus-ring hidden border border-white/20 px-3 py-2.5 text-[10px] font-black uppercase tracking-wider transition hover:border-lime hover:text-lime sm:inline-flex md:px-4 md:py-3" href="#reservas" data-i18n="nav.book">Reservar</a>
+      <label class="sr-only" for="language-select" data-i18n="header.language">Seleccionar idioma</label><select id="language-select" class="focus-ring h-9 w-[3.4rem] border border-white/20 bg-ink px-1.5 text-[10px] font-black text-white sm:h-10 sm:w-[3.6rem] sm:px-2" aria-label="Seleccionar idioma" data-i18n-aria="header.language"><option value="es">ES</option><option value="va">VA</option></select>
+      <button type="button" data-cart-trigger class="focus-ring inline-flex items-center gap-1.5 bg-lime px-2.5 py-2.5 text-[10px] font-bold uppercase tracking-wider text-black transition hover:bg-white sm:gap-2 sm:px-3 sm:py-3" aria-haspopup="dialog" aria-controls="cart-dialog" aria-expanded="false" aria-label="Carrito, abrir carrito, 0 productos">
         <svg aria-hidden="true" viewBox="0 0 24 24" class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 8h14l1 13H4L5 8Z"/><path d="M9 9V6a3 3 0 0 1 6 0v3"/></svg>
         <span class="hidden sm:inline" data-i18n="nav.cart">Carrito</span><span id="header-cart-count" class="grid h-5 min-w-5 place-items-center rounded-full bg-ink px-1 text-[9px] text-lime" aria-label="0 productos">0</span>
       </button>
     </div>
   </div>
-  <nav class="scrollbar-none flex gap-5 overflow-x-auto border-t border-white/5 px-5 py-2 lg:hidden" aria-label="Navegación rápida" data-i18n-aria="header.quickNav">
+  <nav class="scrollbar-none flex gap-4 overflow-x-auto border-t border-white/5 px-4 py-2 sm:gap-5 sm:px-5 lg:hidden" aria-label="Navegación rápida" data-i18n-aria="header.quickNav">
     <a class="header-link" href="#menu" data-i18n="nav.menu">Menú</a><a class="header-link" href="#fotos" data-i18n="nav.photos">Fotos</a><a class="header-link" href="#promociones" data-i18n="nav.promos">Promociones</a><a class="header-link" href="#reservas" data-i18n="nav.reservations">Reservas</a><a class="header-link" href="#contacto" data-i18n="nav.location">Ubicación</a><a class="header-link" href="#faq" data-i18n="nav.faq">FAQ</a>
   </nav>
 </header>

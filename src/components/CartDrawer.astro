@@ -1,7 +1,7 @@
 ---
 import Icon from './Icon.astro';
 ---
-<button id="cart-trigger" data-cart-trigger type="button" class="focus-ring fixed bottom-24 right-4 z-40 inline-flex items-center gap-2 bg-lime px-4 py-3 text-xs font-bold uppercase tracking-wider text-black shadow-xl transition hover:bg-white md:bottom-6 md:right-6" aria-haspopup="dialog" aria-controls="cart-dialog" aria-expanded="false" aria-label="Carrito, abrir carrito, 0 productos">
+<button id="cart-trigger" data-cart-trigger type="button" class="focus-ring fixed bottom-[calc(4.75rem+env(safe-area-inset-bottom))] right-4 z-40 inline-flex items-center gap-2 bg-lime px-4 py-3 text-xs font-bold uppercase tracking-wider text-black shadow-xl transition hover:bg-white md:bottom-6 md:right-6" aria-haspopup="dialog" aria-controls="cart-dialog" aria-expanded="false" aria-label="Carrito, abrir carrito, 0 productos">
   <svg aria-hidden="true" viewBox="0 0 24 24" class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 8h14l1 13H4L5 8Z"/><path d="M9 9V6a3 3 0 0 1 6 0v3"/></svg>
   <span data-i18n="cart.shortName">Carrito</span><span id="cart-count" class="grid h-6 min-w-6 place-items-center rounded-full bg-ink px-1 text-[10px] font-black text-lime" aria-label="0 productos">0</span>
 </button>
